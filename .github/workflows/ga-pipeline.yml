@@ -20,7 +20,7 @@ jobs:
       - name: Staging
         run: mkdir staging && cp target/*.jar staging
       - name: Upload as package
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v3.1.3
         with:
           name: QIMA-Challenge
           path: staging
