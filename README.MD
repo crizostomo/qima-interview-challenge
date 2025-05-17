@@ -124,6 +124,7 @@ This script will stop and remove the Docker containers associated with the appli
 - **Scalability Potential:** With improvements, the project can be adapted for larger-scale applications.
 - **User-Friendly UI:** The frontend is designed with Ant Design components for a clean and professional user experience.
 - **Automatic Database Migration:** Uses flyway to automatically create and migrate the database schema.
+- **CI flow based on Github actions, this is a WIP since the version is having some issues
 
 By following these steps, you should be able to set up and run the QIMA Challenge project successfully.
 
