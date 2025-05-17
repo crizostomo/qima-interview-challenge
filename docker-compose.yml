@@ -1,0 +1,15 @@
+version: '2.4'
+services:
+  db:
+    image: mysql:8.0
+    container_name: qima_challenge
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: qima-db
+    ports:
+      - "3306:3306"
+    volumes:
+      - qima_challenge:/var/lib/mysql
+
+volumes:
+  qima_challenge:
