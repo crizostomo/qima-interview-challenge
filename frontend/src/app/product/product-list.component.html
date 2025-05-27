@@ -1,0 +1,52 @@
+<mat-toolbar color="primary" class="toolbar">
+  <span>Product Management</span>
+  <span class="spacer"></span>
+  <button mat-button (click)="navigateToCreate()">Create Product</button>
+  <button mat-button (click)="logout()">Logout</button>
+</mat-toolbar>
+
+<mat-card>
+  <form [formGroup]="filterForm" (ngSubmit)="applyFilter()">
+    <div class="filter-row">
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Min Price</mat-label>
+        <input matInput type="number" formControlName="minPrice" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Max Price</mat-label>
+        <input matInput type="number" formControlName="maxPrice" />
+      </mat-form-field>
+      <button mat-stroked-button type="button" (click)="resetFilter()">Reset</button>
+      <button mat-raised-button color="accent" type="submit">Search</button>
+    </div>
+  </form>
+</mat-card>
+
+<mat-card>
+  <table mat-table [dataSource]="products" class="mat-elevation-z8">
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let product"> {{ product.name }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef> Price </th>
+      <td mat-cell *matCellDef="let product"> ${{ product.price | number: '1.2-2' }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let product">
+        <button mat-button color="primary" (click)="edit(product.id)">Edit</button>
+        <button mat-button color="warn" (click)="delete(product.id)">Delete</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</mat-card>
